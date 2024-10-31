@@ -16,4 +16,11 @@ public class CoinScript : MonoBehaviour
     {
         transform.Rotate(0f,0f,rotatespeed*Time.deltaTime);
     }
+    private void OnTriggerEnter(Collider other)
+    {
+
+        //Debug.Log(other.gameObject.name + "hit");
+        other.GetComponent<Player>().AddCoin();
+        Destroy(gameObject);
+    }
 }
