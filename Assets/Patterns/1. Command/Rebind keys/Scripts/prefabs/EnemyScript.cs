@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CoinScript : MonoBehaviour
+public class EnemyScript : MonoBehaviour
 {
-    float rotatespeed = 90f;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,17 +13,15 @@ public class CoinScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(0f,0f,rotatespeed*Time.deltaTime);
+        
     }
     private void OnTriggerEnter(Collider other)
     {
 
-        //Debug.Log(other.gameObject.name + "hit");
-        if (other.tag == "Player") 
+        if (other.tag == "Player")
         {
-            other.GetComponent<Player>().AddCoin();
+            other.GetComponent<Player>().KillEnemy();
         }
-        
         Destroy(gameObject);
     }
 }

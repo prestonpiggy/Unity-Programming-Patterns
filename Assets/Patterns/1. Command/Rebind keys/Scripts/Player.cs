@@ -4,10 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
-{
+{   
+    
     public int CoinAmount = 0;
+    public int EnemiesKilled = 0;
     // event for coin collection
     public event Action CoinCollectedEvent;
+    public event Action EnemyKilledEvent;
 
 
     // Start is called before the first frame update
@@ -19,6 +22,11 @@ public class Player : MonoBehaviour
     {
         CoinAmount++;
         CoinCollectedEvent.Invoke();
+    }
+    public void KillEnemy()
+    {
+        EnemiesKilled++;
+        EnemyKilledEvent.Invoke();
     }
 
     // Update is called once per frame
