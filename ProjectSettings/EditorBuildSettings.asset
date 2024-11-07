@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Patterns/1. Command/Rebind keys/MainMenu.unity
+    guid: f7975737dcb683b46a5fad4a4e876756
+  - enabled: 1
+    path: Assets/Patterns/1. Command/Rebind keys/rebind keys.unity
+    guid: 787605c716f7d6a478f8ca853faae0f0
   m_configObjects: {}
