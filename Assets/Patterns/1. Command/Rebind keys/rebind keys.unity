@@ -332,7 +332,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1249201578}
   - component: {fileID: 1249201577}
-  - component: {fileID: 1249201579}
   m_Layer: 0
   m_Name: CoinSpawner
   m_TagString: Untagged
@@ -370,21 +369,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1249201579
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1249201576}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 454c72f60ce369040a2e6af0f765750c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemy: {fileID: 2619348091900620450, guid: b9298502c833eae42a9bc01654aa1034, type: 3}
-  timeInterval: 1
-  currentime: 0
 --- !u!1 &1272538776
 GameObject:
   m_ObjectHideFlags: 0

@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public class AudioManager : MonoBehaviour
 {
-    public static GameManager Instance { get; private set; }
+    public static AudioManager Instance { get; private set; }
     // Start is called before the first frame update
 
 
+    public AudioSource baseMusic;
+    public AudioSource battleMusic;
     private void Awake()
     {
         if (Instance == null)
@@ -42,6 +44,10 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+    }
+     public void PLAYSOUND(AudioClip clip)
+      {
         
     }
 }
