@@ -20,7 +20,7 @@ public class AudioManager : MonoBehaviour
         {
             Debug.Log("instance exists");
             Destroy(this);
-            //Destroy(gameObject);
+            Destroy(gameObject);
         }
     }
     // Start is called before the first frame update

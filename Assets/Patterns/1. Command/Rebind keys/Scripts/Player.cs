@@ -33,10 +33,12 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            SceneManager.LoadScene(0);
+        
+        //if (Input.GetKeyDown(KeyCode.Escape))
+        //{
+        //    GameManager.gamestate = GameState.MENU;
+        //    SceneManager.LoadScene(0);
 
-        }
+        //}
     }
 }

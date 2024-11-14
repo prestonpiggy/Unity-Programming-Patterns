@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace CommandPattern.RebindKeys
 {
@@ -61,22 +62,22 @@ namespace CommandPattern.RebindKeys
             //If we were moving with speed * Time.deltaTime, the undo system would be more comlicated to implement.
             //When we undo, the Time.deltaTime may be different so we end up at another position than we previously had
             //You could solve this by saving the Time.deltaTime somewhere
-            if (Input.GetKeyDown(KeyCode.W))
-            {
-                ExecuteNewCommand(buttonW);
-            }
-            else if (Input.GetKeyDown(KeyCode.A))
-            {
-                ExecuteNewCommand(buttonA);
-            }
-            else if (Input.GetKeyDown(KeyCode.S))
-            {
-                ExecuteNewCommand(buttonS);
-            }
-            else if (Input.GetKeyDown(KeyCode.D))
-            {
-                ExecuteNewCommand(buttonD);
-            }
+            //if (Input.GetKeyDown(KeyCode.W))
+            //{
+            //    ExecuteNewCommand(buttonW);
+            //}
+            //else if (Input.GetKeyDown(KeyCode.A))
+            //{
+            //    ExecuteNewCommand(buttonA);
+            //}
+            //else if (Input.GetKeyDown(KeyCode.S))
+            //{
+            //    ExecuteNewCommand(buttonS);
+            //}
+            //else if (Input.GetKeyDown(KeyCode.D))
+            //{
+            //    ExecuteNewCommand(buttonD);
+            //}
             //Undo with u (ctrl + z is sometimes interfering with the editor's undo system)
             else if (Input.GetKeyDown(KeyCode.U))
             {
@@ -128,6 +129,34 @@ namespace CommandPattern.RebindKeys
 
                 isReplaying = true;
             }
+            
+            //check gamestate example
+            switch (GameManager.gamestate)
+            {
+                case GameState.REPLAYING:
+                    break;
+                case GameState.PLAYING:
+                    //check inputs for player movement INSERT MOVEMENT HERE!!
+                    HandlePlayInput();
+                    break;
+                case GameState.PAUSE:
+                    //check input for the pause key
+                    
+                    //if (Input.GetKeyDown(KeyCode.P))
+                    //{
+                    //    Time.timeScale = 1;
+                    //    GameManager.gamestate = GameState.PAUSE;
+                    //    Debug.Log("unpaused");
+                    //}
+                    HandlePauseInput();
+                    break;
+                case GameState.GAME_OVER:
+                    //check if game over
+                    break;
+
+
+            }
+            
         }
 
 
@@ -181,6 +210,49 @@ namespace CommandPattern.RebindKeys
             key1 = key2;
             
             key2 = temp;
+        }
+        void HandlePlayInput() {
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                ExecuteNewCommand(buttonW);
+            }
+            else if (Input.GetKeyDown(KeyCode.A))
+            {
+                ExecuteNewCommand(buttonA);
+            }
+            else if (Input.GetKeyDown(KeyCode.S))
+            {
+                ExecuteNewCommand(buttonS);
+            }
+            else if (Input.GetKeyDown(KeyCode.D))
+            {
+                ExecuteNewCommand(buttonD);
+            }
+            //movement here
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                Time.timeScale = 0;
+                Debug.Log("paused");
+                GameManager.gamestate = GameState.PAUSE;
+
+            }
+        }
+        void HandlePauseInput() {
+
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+
+                Time.timeScale = 1;
+                GameManager.gamestate = GameState.PLAYING;
+                Debug.Log("unpaused");
+            }
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                Time.timeScale = 1;
+                GameManager.gamestate = GameState.MENU;
+                SceneManager.LoadScene(0);
+
+            }
         }
     }
 }
