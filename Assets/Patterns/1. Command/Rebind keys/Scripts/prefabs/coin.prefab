@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3966750419914489744}
   - component: {fileID: 7004179606666854464}
   - component: {fileID: 4964180247224444497}
-  - component: {fileID: 1151761795995547929}
+  - component: {fileID: 7163909977451215331}
   m_Layer: 0
   m_Name: coin
   m_TagString: Untagged
@@ -122,7 +122,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feb20e15e874de64a8fb9fce4e45d7aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coin: {fileID: 1151761795995547929}
+  coin: {fileID: 7163909977451215331}
+  coinclip: {fileID: 8300000, guid: c84f8cff7db9b444995829a7568abb1d, type: 3}
 --- !u!54 &4964180247224444497
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -150,7 +151,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 62
   m_CollisionDetection: 0
---- !u!82 &1151761795995547929
+--- !u!82 &7163909977451215331
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -168,7 +169,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 200
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500

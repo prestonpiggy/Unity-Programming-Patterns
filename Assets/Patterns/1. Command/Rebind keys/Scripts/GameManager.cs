@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class AudioManager : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
-    public static AudioManager Instance { get; private set; }
+    public static GameManager Instance { get; private set; }
     // Start is called before the first frame update
 
 
