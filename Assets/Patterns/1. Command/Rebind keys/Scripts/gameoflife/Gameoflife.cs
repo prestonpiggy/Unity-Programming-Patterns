@@ -18,6 +18,7 @@ public class Gameoflife : MonoBehaviour
     private Slate[,] all_slates = new Slate[width,height];
     //single buffer
     private bool[,] grid = new bool[width,height];
+    private bool[,] grid2 = new bool[width, height];
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +33,7 @@ public class Gameoflife : MonoBehaviour
                     all_slates[j,i].SetDead();
                     // C# sets false by default but whatever
                     grid[j, i] = false;
+                    
                 }
             }
 
@@ -52,26 +54,104 @@ public class Gameoflife : MonoBehaviour
         grid[7, 5] = true;
         grid[2, 9] = true;
         grid[10, 2] = true;
-
+        grid[11, 2] = true;
+        grid[12, 2] = true;
+        grid[10, 3] = true;
+        grid[10, 4] = true;
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        for(int i = 0;i < height; i++)
+        if (Input.GetKeyDown("down"))
         {
-            for( int j = 0; j < width; j++)
+            for (int i = 0; i < height; i++)
             {
-                if (grid[j, i] == true)
-                {
-                    all_slates[j,i].SetAlive();
-                }
-                else
-                {
-                    all_slates[j, i].SetDead();
+                for (int j = 0; j < width; j++)
+                { 
+                    CheckAround(j, i);
                 }
             }
         }
-    }//make function to check 
+        //sets alive or not
+        if (Input.GetKeyDown("up"))
+        {
+
+            for (int i = 0; i < height; i++)
+            {
+                for (int j = 0; j < width; j++)
+                {
+                    if (grid2[j, i] == true)
+                    {
+                        all_slates[j, i].SetAlive();
+                    }
+                    else
+                    {
+                        all_slates[j, i].SetDead();
+                    }
+                    
+                }
+            }
+
+        }
+    }//make function to check
+     void CheckAround(int j, int i)
+    {
+        //-1,0  +1,0    0,+1    0,-1    -1,-1   +1,+1   -1,+1   +1,-1
+        int count = 0;
+
+        Debug.Log(j+":" +i);
+        if(j>=1 && j<=18 && i >= 1 && i <= 18)
+        {
+            if (grid[j - 1, i] == true)
+            {
+                count++;
+            }
+            if (grid[j + 1, i] == true)
+            {
+                count++;
+            }
+            if (grid[j, i - 1] == true)
+            {
+                count++;
+            }
+            if (grid[j, i + 1] == true)
+            {
+                count++;
+            }
+            if (grid[j - 1, i - 1] == true)
+            {
+                count++;
+            }
+            if (grid[j + 1, i + 1] == true)
+            {
+                count++;
+            }
+            if (grid[j - 1, i + 1] == true)
+            {
+                count++;
+            }
+            if (grid[j + 1, i - 1] == true)
+            {
+                count++;
+            }
+            // check count
+            if (count < 2)
+            {
+                grid2[j, i] = false;
+            }
+            if (count == 2 || count == 3)
+            {
+                grid2[j, i] = true;
+            }
+            if (count > 3)
+            {
+                grid2[j, i] = false;
+            }
+        }
+        
+
+        
+    }
 }
